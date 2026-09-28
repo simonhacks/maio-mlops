@@ -3,7 +3,7 @@ services:
     image: python:3.11-slim
     working_dir: /app
     command: >
-      sh -c "pip install --no-cache-dir mlflow==2.7.1 && mlflow server --backend-store-uri sqlite:////mlflow/mlflow.db --default-artifact-root file:///mlflow/artifacts --host 0.0.0.0 --port 5000"
+      sh -c "pip install --no-cache-dir 'sqlalchemy<2.1' 'mlflow==2.7.1' && mlflow server --backend-store-uri sqlite:////mlflow/mlflow.db --default-artifact-root file:///mlflow/artifacts --host 0.0.0.0 --port 5000"
     ports: ["5000:5000"]
     volumes:
       - mlflow_data:/mlflow
